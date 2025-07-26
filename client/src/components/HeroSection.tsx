@@ -59,7 +59,7 @@ export default function HeroSection() {
       const successfulResults = data.results.filter((r: any) => !r.error);
       setResults(successfulResults);
       setBulkUrls("");
-      
+
       const errorCount = data.results.length - successfulResults.length;
       if (errorCount > 0) {
         toast({
@@ -101,7 +101,7 @@ export default function HeroSection() {
         .map(url => url.trim())
         .filter(url => url)
         .map(url => ({ originalUrl: url }));
-      
+
       if (urls.length === 0) {
         toast({
           title: "Error",
@@ -110,7 +110,7 @@ export default function HeroSection() {
         });
         return;
       }
-      
+
       bulkShortenMutation.mutate(urls);
     }
   };
@@ -165,7 +165,7 @@ export default function HeroSection() {
                     Enter your long URL here
                   </Label>
                 </div>
-                
+
                 <div className="floating-label md:w-48">
                   <Input
                     type="text"
@@ -182,7 +182,7 @@ export default function HeroSection() {
                     Custom alias (optional)
                   </Label>
                 </div>
-                
+
                 <Button
                   onClick={handleShorten}
                   disabled={shortenMutation.isPending}
@@ -219,7 +219,7 @@ export default function HeroSection() {
                     Enter URLs (one per line)
                   </Label>
                 </div>
-                
+
                 <Button
                   onClick={handleShorten}
                   disabled={bulkShortenMutation.isPending}
@@ -239,7 +239,7 @@ export default function HeroSection() {
                 </Button>
               </div>
             )}
-            
+
             <div className="mt-4 flex items-center justify-center">
               <button
                 onClick={() => setBulkMode(!bulkMode)}
@@ -270,14 +270,14 @@ export default function HeroSection() {
                     <p className="text-gray-600">Your links are ready to share</p>
                   </div>
                 </div>
-                
+
                 <div className="space-y-6">
                   {results.map((result, index) => (
                     <div key={index} className="space-y-4">
                       {results.length > 1 && (
                         <h4 className="font-medium text-gray-900">URL #{index + 1}</h4>
                       )}
-                      
+
                       <div>
                         <Label className="block text-sm font-medium text-gray-700 mb-2">Original URL</Label>
                         <div className="bg-gray-50 rounded-lg p-3 border border-gray-200">
@@ -286,7 +286,7 @@ export default function HeroSection() {
                           </span>
                         </div>
                       </div>
-                      
+
                       <div>
                         <Label className="block text-sm font-medium text-gray-700 mb-2">Shortened URL</Label>
                         <div className="flex items-center space-x-3">
@@ -304,7 +304,7 @@ export default function HeroSection() {
                           </Button>
                         </div>
                       </div>
-                      
+
                       {index < results.length - 1 && <div className="border-t border-gray-200 pt-4"></div>}
                     </div>
                   ))}
